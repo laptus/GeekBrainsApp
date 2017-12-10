@@ -25,6 +25,7 @@
 		DBB173A81FCACAF200FC0479 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB173A61FCACAF200FC0479 /* Main.storyboard */; };
 		DBB173AA1FCACAF200FC0479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB173A91FCACAF200FC0479 /* Assets.xcassets */; };
 		DBB173AD1FCACAF200FC0479 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB173AB1FCACAF200FC0479 /* LaunchScreen.storyboard */; };
+		DBC132ED1FDD4DE8004BB41A /* VKDataAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC132EC1FDD4DE8004BB41A /* VKDataAccessor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		DBB173A91FCACAF200FC0479 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBB173AC1FCACAF200FC0479 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBB173AE1FCACAF200FC0479 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBC132EC1FDD4DE8004BB41A /* VKDataAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKDataAccessor.swift; sourceTree = "<group>"; };
 		ED9DB3167C5E48453AF031E6 /* Pods_GeekBrainsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeekBrainsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 		DBB173A11FCACAF100FC0479 /* GeekBrainsApp */ = {
 			isa = PBXGroup;
 			children = (
+				DBC132EB1FDD4D94004BB41A /* VKDataAccessor */,
 				DB509A691FDD2C4600EACD15 /* PhotoGroup */,
 				DB509A671FDD249800EACD15 /* KeychainPasswordItem.swift */,
 				DB560B0D1FD499EF0076B350 /* FriendsList */,
@@ -146,6 +149,14 @@
 				DB3E8F5F1FCF4E3100CA82D9 /* MainViewTabController.swift */,
 			);
 			path = GeekBrainsApp;
+			sourceTree = "<group>";
+		};
+		DBC132EB1FDD4D94004BB41A /* VKDataAccessor */ = {
+			isa = PBXGroup;
+			children = (
+				DBC132EC1FDD4DE8004BB41A /* VKDataAccessor.swift */,
+			);
+			path = VKDataAccessor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +292,7 @@
 				DB72BFCA1FD4A92900695986 /* FriendsViewController.swift in Sources */,
 				DBB173A31FCACAF100FC0479 /* AppDelegate.swift in Sources */,
 				DB509A681FDD249900EACD15 /* KeychainPasswordItem.swift in Sources */,
+				DBC132ED1FDD4DE8004BB41A /* VKDataAccessor.swift in Sources */,
 				DB560B131FD4A44E0076B350 /* PhotoCollectionViewController.swift in Sources */,
 				DBAFD47B1FD4B2E000807D63 /* AvailableGroupViewCell.swift in Sources */,
 				DBAFD4791FD4B2CA00807D63 /* JoinedGroupViewCell.swift in Sources */,
