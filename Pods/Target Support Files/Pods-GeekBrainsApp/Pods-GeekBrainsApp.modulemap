@@ -1,0 +1,6 @@
+framework module Pods_GeekBrainsApp {
+  umbrella header "Pods-GeekBrainsApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

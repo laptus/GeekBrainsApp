@@ -7,23 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73A89219DE465B74596D217C /* Pods_GeekBrainsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9DB3167C5E48453AF031E6 /* Pods_GeekBrainsApp.framework */; };
+		DB23935D1FD4B0EC006FCFE5 /* MyGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB23935C1FD4B0EC006FCFE5 /* MyGroupsViewController.swift */; };
 		DB3E8F601FCF4E3100CA82D9 /* MainViewTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E8F5F1FCF4E3100CA82D9 /* MainViewTabController.swift */; };
+		DB509A681FDD249900EACD15 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB509A671FDD249800EACD15 /* KeychainPasswordItem.swift */; };
+		DB560B0F1FD49A970076B350 /* GroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB560B0E1FD49A970076B350 /* GroupInfo.swift */; };
+		DB560B131FD4A44E0076B350 /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB560B121FD4A44E0076B350 /* PhotoCollectionViewController.swift */; };
+		DB560B151FD4A4720076B350 /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB560B141FD4A4720076B350 /* PhotoViewCell.swift */; };
+		DB72BFCA1FD4A92900695986 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72BFC91FD4A92900695986 /* FriendsViewController.swift */; };
+		DB75B3381FD48FC6005B724C /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB75B3371FD48FC6005B724C /* FriendsTableViewController.swift */; };
+		DB75B33A1FD49054005B724C /* FriendsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB75B3391FD49054005B724C /* FriendsViewCell.swift */; };
+		DBAFD4791FD4B2CA00807D63 /* JoinedGroupViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAFD4781FD4B2CA00807D63 /* JoinedGroupViewCell.swift */; };
+		DBAFD47B1FD4B2E000807D63 /* AvailableGroupViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAFD47A1FD4B2E000807D63 /* AvailableGroupViewCell.swift */; };
+		DBAFD47D1FD4B2FF00807D63 /* AvailableGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAFD47C1FD4B2FF00807D63 /* AvailableGroupsTableViewController.swift */; };
 		DBB173A31FCACAF100FC0479 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB173A21FCACAF100FC0479 /* AppDelegate.swift */; };
-		DBB173A51FCACAF100FC0479 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB173A41FCACAF100FC0479 /* ViewController.swift */; };
+		DBB173A51FCACAF100FC0479 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB173A41FCACAF100FC0479 /* LoginViewController.swift */; };
 		DBB173A81FCACAF200FC0479 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB173A61FCACAF200FC0479 /* Main.storyboard */; };
 		DBB173AA1FCACAF200FC0479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBB173A91FCACAF200FC0479 /* Assets.xcassets */; };
 		DBB173AD1FCACAF200FC0479 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB173AB1FCACAF200FC0479 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		159FC7F4C5F59098D9FE5D56 /* Pods-GeekBrainsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeekBrainsApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeekBrainsApp/Pods-GeekBrainsApp.debug.xcconfig"; sourceTree = "<group>"; };
+		6D424B0843C0933AA67B57D4 /* Pods-GeekBrainsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeekBrainsApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeekBrainsApp/Pods-GeekBrainsApp.release.xcconfig"; sourceTree = "<group>"; };
+		DB23935C1FD4B0EC006FCFE5 /* MyGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsViewController.swift; sourceTree = "<group>"; };
 		DB3E8F5F1FCF4E3100CA82D9 /* MainViewTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTabController.swift; sourceTree = "<group>"; };
+		DB509A671FDD249800EACD15 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		DB560B0E1FD49A970076B350 /* GroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfo.swift; sourceTree = "<group>"; };
+		DB560B121FD4A44E0076B350 /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
+		DB560B141FD4A4720076B350 /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
+		DB72BFC91FD4A92900695986 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		DB75B3371FD48FC6005B724C /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		DB75B3391FD49054005B724C /* FriendsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewCell.swift; sourceTree = "<group>"; };
+		DBAFD4781FD4B2CA00807D63 /* JoinedGroupViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedGroupViewCell.swift; sourceTree = "<group>"; };
+		DBAFD47A1FD4B2E000807D63 /* AvailableGroupViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableGroupViewCell.swift; sourceTree = "<group>"; };
+		DBAFD47C1FD4B2FF00807D63 /* AvailableGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableGroupsTableViewController.swift; sourceTree = "<group>"; };
 		DBB1739F1FCACAF100FC0479 /* GeekBrainsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeekBrainsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBB173A21FCACAF100FC0479 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DBB173A41FCACAF100FC0479 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DBB173A41FCACAF100FC0479 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DBB173A71FCACAF200FC0479 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DBB173A91FCACAF200FC0479 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBB173AC1FCACAF200FC0479 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBB173AE1FCACAF200FC0479 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED9DB3167C5E48453AF031E6 /* Pods_GeekBrainsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeekBrainsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +57,68 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73A89219DE465B74596D217C /* Pods_GeekBrainsApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E36FAD68BBC2291B62DF066 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED9DB3167C5E48453AF031E6 /* Pods_GeekBrainsApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7D3D5CF5BA1520EAAD134531 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				159FC7F4C5F59098D9FE5D56 /* Pods-GeekBrainsApp.debug.xcconfig */,
+				6D424B0843C0933AA67B57D4 /* Pods-GeekBrainsApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DB509A691FDD2C4600EACD15 /* PhotoGroup */ = {
+			isa = PBXGroup;
+			children = (
+				DB560B121FD4A44E0076B350 /* PhotoCollectionViewController.swift */,
+				DB560B141FD4A4720076B350 /* PhotoViewCell.swift */,
+			);
+			path = PhotoGroup;
+			sourceTree = "<group>";
+		};
+		DB560B0C1FD499DF0076B350 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				DB560B0E1FD49A970076B350 /* GroupInfo.swift */,
+				DB23935C1FD4B0EC006FCFE5 /* MyGroupsViewController.swift */,
+				DBAFD4781FD4B2CA00807D63 /* JoinedGroupViewCell.swift */,
+				DBAFD47A1FD4B2E000807D63 /* AvailableGroupViewCell.swift */,
+				DBAFD47C1FD4B2FF00807D63 /* AvailableGroupsTableViewController.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		DB560B0D1FD499EF0076B350 /* FriendsList */ = {
+			isa = PBXGroup;
+			children = (
+				DB72BFC91FD4A92900695986 /* FriendsViewController.swift */,
+				DB75B3371FD48FC6005B724C /* FriendsTableViewController.swift */,
+				DB75B3391FD49054005B724C /* FriendsViewCell.swift */,
+			);
+			path = FriendsList;
+			sourceTree = "<group>";
+		};
 		DBB173961FCACAF100FC0479 = {
 			isa = PBXGroup;
 			children = (
 				DBB173A11FCACAF100FC0479 /* GeekBrainsApp */,
 				DBB173A01FCACAF100FC0479 /* Products */,
+				7D3D5CF5BA1520EAAD134531 /* Pods */,
+				4E36FAD68BBC2291B62DF066 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,8 +133,12 @@
 		DBB173A11FCACAF100FC0479 /* GeekBrainsApp */ = {
 			isa = PBXGroup;
 			children = (
+				DB509A691FDD2C4600EACD15 /* PhotoGroup */,
+				DB509A671FDD249800EACD15 /* KeychainPasswordItem.swift */,
+				DB560B0D1FD499EF0076B350 /* FriendsList */,
+				DB560B0C1FD499DF0076B350 /* Groups */,
 				DBB173A21FCACAF100FC0479 /* AppDelegate.swift */,
-				DBB173A41FCACAF100FC0479 /* ViewController.swift */,
+				DBB173A41FCACAF100FC0479 /* LoginViewController.swift */,
 				DBB173A61FCACAF200FC0479 /* Main.storyboard */,
 				DBB173A91FCACAF200FC0479 /* Assets.xcassets */,
 				DBB173AB1FCACAF200FC0479 /* LaunchScreen.storyboard */,
@@ -74,9 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DBB173B11FCACAF200FC0479 /* Build configuration list for PBXNativeTarget "GeekBrainsApp" */;
 			buildPhases = (
+				900CD685D8797C6EE87E0482 /* [CP] Check Pods Manifest.lock */,
 				DBB1739B1FCACAF100FC0479 /* Sources */,
 				DBB1739C1FCACAF100FC0479 /* Frameworks */,
 				DBB1739D1FCACAF100FC0479 /* Resources */,
+				09B05895979073754C0A17FD /* [CP] Embed Pods Frameworks */,
+				2C69069669A934035A88AF5D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -134,14 +218,79 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09B05895979073754C0A17FD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GeekBrainsApp/Pods-GeekBrainsApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeekBrainsApp/Pods-GeekBrainsApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2C69069669A934035A88AF5D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeekBrainsApp/Pods-GeekBrainsApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		900CD685D8797C6EE87E0482 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GeekBrainsApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DBB1739B1FCACAF100FC0479 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBB173A51FCACAF100FC0479 /* ViewController.swift in Sources */,
+				DBB173A51FCACAF100FC0479 /* LoginViewController.swift in Sources */,
+				DB72BFCA1FD4A92900695986 /* FriendsViewController.swift in Sources */,
 				DBB173A31FCACAF100FC0479 /* AppDelegate.swift in Sources */,
+				DB509A681FDD249900EACD15 /* KeychainPasswordItem.swift in Sources */,
+				DB560B131FD4A44E0076B350 /* PhotoCollectionViewController.swift in Sources */,
+				DBAFD47B1FD4B2E000807D63 /* AvailableGroupViewCell.swift in Sources */,
+				DBAFD4791FD4B2CA00807D63 /* JoinedGroupViewCell.swift in Sources */,
+				DB23935D1FD4B0EC006FCFE5 /* MyGroupsViewController.swift in Sources */,
+				DB560B151FD4A4720076B350 /* PhotoViewCell.swift in Sources */,
+				DBAFD47D1FD4B2FF00807D63 /* AvailableGroupsTableViewController.swift in Sources */,
+				DB75B3381FD48FC6005B724C /* FriendsTableViewController.swift in Sources */,
 				DB3E8F601FCF4E3100CA82D9 /* MainViewTabController.swift in Sources */,
+				DB75B33A1FD49054005B724C /* FriendsViewCell.swift in Sources */,
+				DB560B0F1FD49A970076B350 /* GroupInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,13 +425,17 @@
 		};
 		DBB173B21FCACAF200FC0479 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 159FC7F4C5F59098D9FE5D56 /* Pods-GeekBrainsApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GeekBrainsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = My.GeekBrainsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -290,13 +443,17 @@
 		};
 		DBB173B31FCACAF200FC0479 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D424B0843C0933AA67B57D4 /* Pods-GeekBrainsApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GeekBrainsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = My.GeekBrainsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
