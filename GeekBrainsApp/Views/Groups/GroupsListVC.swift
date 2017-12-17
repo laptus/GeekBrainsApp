@@ -8,9 +8,13 @@
 
 import UIKit
 
-class MyGroupsViewController: UITableViewController {
+class GroupsListVC: UITableViewController {
 
-    var myGroupsList = ["1","2","3"]
+    var myGroupsList = [GroupInfo]()
+    
+    var environment: Environment {
+        return EnvironmentImp.VKEnvironment()
+    }
     
     @IBOutlet var joinedGroupsTableView: UITableView!
     override func viewDidLoad() {
@@ -21,8 +25,22 @@ class MyGroupsViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        loadUserGroups()
     }
 
+    func loadUserGroups(){
+        let tabsVC = navigationController?.tabBarController as! TabsVCProtocol
+        let groupService = GroupService(environment: environment, token: tabsVC.token)
+        groupService.getGroupById(){
+            [weak self] friendsList in
+            // сохраняем полученные данные в массиве, чтобы коллекция могла получить к ним доступ
+            self?.myGroupsList = friendsList
+            // коллекция должна прочитать новые данные
+            self?.tableView?.reloadData()
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -43,7 +61,10 @@ class MyGroupsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JoinedGroupViewCell", for: indexPath) as! JoinedGroupViewCell
-        cell.joinedGroupName.text = myGroupsList[indexPath.row]
+        cell.joinedGroupName.text = myGroupsList[indexPath.row].name
+        let url = URL(string: myGroupsList[indexPath.row].photoUrl)
+        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+        cell.joinedGroupAvatarImage.image = UIImage(data: data!)
         return cell
     }
  
@@ -51,11 +72,17 @@ class MyGroupsViewController: UITableViewController {
         if  segue.identifier  == "addGroup" {
             let  allGroupsController  =  segue.source  as!   AvailableGroupsTableViewController
             if let indexPath  =  allGroupsController.availableGroupsTable.indexPathForSelectedRow {
-                let  groupName  =  allGroupsController.availaleGroups[indexPath.row]
-                if !myGroupsList.contains(groupName){
+                let  groupName  =  allGroupsController.groupsList[indexPath.row]
+                let results = myGroupsList.filter { $0.id == groupName.id }
+                let notExists = results.isEmpty == true
+                if notExists{
                     myGroupsList.append(groupName)
                     joinedGroupsTableView.reloadData()
                 }
+//                if !myGroupsList.contains(groupName){
+//                    myGroupsList.append(groupName)
+//                    joinedGroupsTableView.reloadData()
+//                }
             }
         }
     }

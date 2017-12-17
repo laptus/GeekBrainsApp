@@ -10,13 +10,35 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class PhotoCollectionViewController: UICollectionViewController {
+class PhotoCollectionVC: UICollectionViewController {
+    
+    var photoList: [PhotoInfo] = []
+    var userId: Int = 0
+    
     
     var labelPhotoText=""
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadUserPhotos()
     }
 
+    var environment: Environment {
+        return EnvironmentImp.VKEnvironment()
+    }
+    
+    func loadUserPhotos(){
+        let tabsVC = navigationController?.tabBarController as! TabsVCProtocol
+        let UserServie = UserService(environment: environment, token: tabsVC.token)
+        UserServie.downloadPhoto(forUser: userId){
+            [weak self] photoList in
+            // сохраняем полученные данные в массиве, чтобы коллекция могла получить к ним доступ
+            self?.photoList = photoList
+            // коллекция должна прочитать новые данные
+            self?.collectionView?.reloadData()
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,12 +64,14 @@ class PhotoCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 10
+        return photoList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoViewCell", for: indexPath) as! PhotoViewCell
-        cell.photoLabel.text = labelPhotoText
+        let url = URL(string: photoList[indexPath.row].url)
+        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+        cell.photoImage.image = UIImage(data: data!)
         return cell
     }
 

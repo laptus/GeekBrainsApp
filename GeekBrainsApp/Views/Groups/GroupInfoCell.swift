@@ -1,5 +1,5 @@
 //
-//  JoinedGroupViewCell.swift
+//  AvailableGroupViewCell.swift
 //  GeekBrainsApp
 //
 //  Created by Laptev Sasha on 04/12/2017.
@@ -8,9 +8,10 @@
 
 import UIKit
 
-class JoinedGroupViewCell: UITableViewCell {
-    @IBOutlet weak var joinedGroupName: UILabel!
-    @IBOutlet weak var joinedGroupAvatarImage: UIImageView!
+class GroupInfoCell: UITableViewCell {
+    @IBOutlet weak var groupName: UILabel!
+    @IBOutlet weak var groupParticipantsCount: UILabel!
+    @IBOutlet weak var groupAvaterImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
