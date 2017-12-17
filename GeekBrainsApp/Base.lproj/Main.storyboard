@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JnQ-Qi-ald">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -111,12 +111,47 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="117.1875" y="117.18749999999999"/>
+            <point key="canvasLocation" x="116" y="-349"/>
         </scene>
-        <!--Main View Tab Controller-->
+        <!--AuthVC-->
+        <scene sceneID="wNY-KT-3XU">
+            <objects>
+                <viewController id="JnQ-Qi-ald" customClass="AuthVC" customModule="GeekBrainsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Qf-hK-3Cs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m71-Uo-Oa7">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m71-Uo-Oa7" firstAttribute="bottom" secondItem="0A8-jS-iVu" secondAttribute="bottom" id="K35-Vg-tiq"/>
+                            <constraint firstItem="m71-Uo-Oa7" firstAttribute="top" secondItem="0A8-jS-iVu" secondAttribute="top" id="XGF-Nx-sSs"/>
+                            <constraint firstItem="m71-Uo-Oa7" firstAttribute="trailing" secondItem="0A8-jS-iVu" secondAttribute="trailing" id="Z5A-js-tGg"/>
+                            <constraint firstItem="m71-Uo-Oa7" firstAttribute="leading" secondItem="0A8-jS-iVu" secondAttribute="leading" id="k2Y-xW-YSX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0A8-jS-iVu"/>
+                    </view>
+                    <connections>
+                        <outlet property="vkWebView" destination="m71-Uo-Oa7" id="lae-UC-aKR"/>
+                        <segue destination="1SZ-7T-rkU" kind="show" identifier="toApp" id="0E9-FQ-5F0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cOp-iS-K9f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="449"/>
+        </scene>
+        <!--TabsVC-->
         <scene sceneID="h48-eO-o6p">
             <objects>
-                <tabBarController id="1SZ-7T-rkU" customClass="MainViewTabController" customModule="GeekBrainsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="1SZ-7T-rkU" customClass="TabsVC" customModule="GeekBrainsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="08K-wm-TpZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -151,41 +186,37 @@
         <!--Title-->
         <scene sceneID="rCu-M0-pdm">
             <objects>
-                <tableViewController id="Rk2-98-VeW" customClass="MyGroupsViewController" customModule="GeekBrainsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Rk2-98-VeW" customClass="GroupsListVC" customModule="GeekBrainsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pg7-6p-0Cl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="14" reuseIdentifier="JoinedGroupViewCell" id="Mwa-cA-GiQ" customClass="JoinedGroupViewCell" customModule="GeekBrainsApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="14" reuseIdentifier="JoinedGroupViewCell" id="Mwa-cA-GiQ" customClass="GroupCell" customModule="GeekBrainsApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mwa-cA-GiQ" id="JWj-tO-aNA">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMm-gG-t6E">
-                                            <rect key="frame" x="166" y="39" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMm-gG-t6E">
+                                            <rect key="frame" x="94" y="39" width="265" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friendAvatarPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="bxy-Sj-65X">
-                                            <rect key="frame" x="10" y="10" width="146" height="80"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="friendAvatarPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="bxy-Sj-65X">
+                                            <rect key="frame" x="16" y="24" width="50" height="50"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="iMm-gG-t6E" firstAttribute="centerX" secondItem="JWj-tO-aNA" secondAttribute="centerX" id="SsT-sU-gFd"/>
-                                        <constraint firstItem="iMm-gG-t6E" firstAttribute="centerY" secondItem="bxy-Sj-65X" secondAttribute="centerY" id="V5O-se-cfe"/>
-                                        <constraint firstItem="bxy-Sj-65X" firstAttribute="top" secondItem="JWj-tO-aNA" secondAttribute="top" constant="10" id="gKf-82-YKz"/>
-                                        <constraint firstItem="bxy-Sj-65X" firstAttribute="leading" secondItem="JWj-tO-aNA" secondAttribute="leading" constant="10" id="oDh-IQ-7Xn"/>
-                                        <constraint firstItem="iMm-gG-t6E" firstAttribute="leading" secondItem="bxy-Sj-65X" secondAttribute="trailing" constant="10" id="pmR-Dk-idM"/>
-                                        <constraint firstAttribute="bottom" secondItem="bxy-Sj-65X" secondAttribute="bottom" constant="10" id="rdz-M5-cLG"/>
+                                        <constraint firstItem="bxy-Sj-65X" firstAttribute="centerY" secondItem="JWj-tO-aNA" secondAttribute="centerY" id="TqK-tS-0Sp"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="joinedGroupAvatarImage" destination="bxy-Sj-65X" id="CKc-BA-XQs"/>
-                                    <outlet property="joinedGroupName" destination="iMm-gG-t6E" id="ZD9-dM-0D2"/>
+                                    <outlet property="avatar" destination="bxy-Sj-65X" id="CKc-BA-XQs"/>
+                                    <outlet property="name" destination="iMm-gG-t6E" id="ZD9-dM-0D2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -197,7 +228,7 @@
                     <navigationItem key="navigationItem" title="Title" id="EOL-NT-hHf">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="LZ1-BS-1nF">
                             <connections>
-                                <segue destination="waj-EH-LAV" kind="show" id="Mjv-Gd-85M"/>
+                                <segue destination="waj-EH-LAV" kind="show" identifier="toUserPhoto" id="Mjv-Gd-85M"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -212,7 +243,7 @@
         <!--Item-->
         <scene sceneID="LpO-Sk-Pe7">
             <objects>
-                <navigationController id="ADu-9z-qeH" customClass="FriendsViewController" customModule="GeekBrainsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="ADu-9z-qeH" customClass="FriendsVC" customModule="GeekBrainsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="KzL-Pw-RqA"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eis-4u-fs6">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -226,10 +257,10 @@
             </objects>
             <point key="canvasLocation" x="2374" y="924"/>
         </scene>
-        <!--Available Groups Table View Controller-->
+        <!--Search GroupsVC-->
         <scene sceneID="DQP-J2-R17">
             <objects>
-                <tableViewController id="waj-EH-LAV" customClass="AvailableGroupsTableViewController" customModule="GeekBrainsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="waj-EH-LAV" customClass="SearchGroupsVC" customModule="GeekBrainsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tg5-hp-tBI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -243,7 +274,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AvailableGroupViewCell" rowHeight="150" id="zSf-r2-VhB" customClass="AvailableGroupViewCell" customModule="GeekBrainsApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AvailableGroupViewCell" rowHeight="150" id="zSf-r2-VhB" customClass="GroupInfoCell" customModule="GeekBrainsApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zSf-r2-VhB" id="RcT-bH-j3U">
@@ -271,9 +302,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="groupAvaterImage" destination="LaZ-7v-g9A" id="4on-JI-MGP"/>
-                                    <outlet property="groupName" destination="PAK-wI-2fF" id="NDv-e8-95I"/>
-                                    <outlet property="groupParticipantsCount" destination="f8a-bj-WN1" id="bXe-8f-fMj"/>
+                                    <outlet property="avatar" destination="LaZ-7v-g9A" id="4on-JI-MGP"/>
+                                    <outlet property="count" destination="f8a-bj-WN1" id="bXe-8f-fMj"/>
+                                    <outlet property="name" destination="PAK-wI-2fF" id="NDv-e8-95I"/>
                                     <segue destination="TZT-nm-xgx" kind="unwind" identifier="addGroup" unwindAction="addGroupWithSegue:" id="5zF-dc-No1"/>
                                 </connections>
                             </tableViewCell>
@@ -293,10 +324,10 @@
             </objects>
             <point key="canvasLocation" x="4493.6000000000004" y="-549.17541229385313"/>
         </scene>
-        <!--Photo Collection View Controller-->
+        <!--Photo CollectionVC-->
         <scene sceneID="4aQ-rP-LPn">
             <objects>
-                <collectionViewController id="7br-aP-MvD" customClass="PhotoCollectionViewController" customModule="GeekBrainsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="7br-aP-MvD" customClass="PhotoCollectionVC" customModule="GeekBrainsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="J1F-gg-CuP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -308,7 +339,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoViewCell" id="7s3-Tq-g6g" customClass="PhotoViewCell" customModule="GeekBrainsApp" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoViewCell" id="7s3-Tq-g6g" customClass="PhotoCell" customModule="GeekBrainsApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="130" height="107"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -353,16 +384,16 @@
             </objects>
             <point key="canvasLocation" x="4493.6000000000004" y="922.48875562218893"/>
         </scene>
-        <!--Friends Table View Controller-->
+        <!--Friends TablveVC-->
         <scene sceneID="gKp-jL-Ewc">
             <objects>
-                <tableViewController id="QuN-GS-UOL" customClass="FriendsTableViewController" customModule="GeekBrainsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="QuN-GS-UOL" customClass="FriendsTablveVC" customModule="GeekBrainsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dKU-Ld-7B4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendCellView" rowHeight="100" id="3GS-58-2ql" customClass="FriendsViewCell" customModule="GeekBrainsApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendCellView" rowHeight="100" id="3GS-58-2ql" customClass="UserCell" customModule="GeekBrainsApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3GS-58-2ql" id="CCG-nn-j2q">
@@ -392,7 +423,7 @@
                                 <connections>
                                     <outlet property="avatarImageView" destination="IBs-8s-hUJ" id="aM2-vM-hOI"/>
                                     <outlet property="nameLabel" destination="tob-BN-3cq" id="bW5-we-gal"/>
-                                    <segue destination="7br-aP-MvD" kind="show" identifier="showFriendsPhotoLibrary" id="d3D-41-oiB"/>
+                                    <segue destination="7br-aP-MvD" kind="show" identifier="toPhotos" id="d3D-41-oiB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -415,4 +446,7 @@
         <image name="friendAvatarPhoto" width="50" height="50"/>
         <image name="kisa" width="1280" height="800"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0E9-FQ-5F0"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 class FriendsTablveVC: UITableViewController {
     var friendsList: [UserInfo] = []
@@ -25,17 +26,26 @@ class FriendsTablveVC: UITableViewController {
     
     func loadFriendsList(){
         let tabsVC = navigationController?.tabBarController as! TabsVCProtocol
-        let UserServie = UserService(environment: environment, token: tabsVC.token)
-        UserServie.getFriendsLit(){
-             [weak self] friendsList in
-                // сохраняем полученные данные в массиве, чтобы коллекция могла получить к ним доступ
-                self?.friendsList = friendsList
-                // коллекция должна прочитать новые данные
-                self?.tableView?.reloadData()
+        let userService = UserService(environment: environment, token: tabsVC.token)
+        userService.downloadFriendsList(){
+             [weak self] in
+            self?.loadFriends()
+            self?.tableView?.reloadData()
         }
         
     }
 
+    func loadFriends()-> [UserInfo]{
+        do{
+            let realm = try Realm()
+            self.friendsList = Array(realm.objects(UserInfo.self))
+        }
+        catch{
+            print(error)
+        }
+        return [UserInfo]()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -54,11 +64,14 @@ class FriendsTablveVC: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "friendCellView", for: indexPath) as! FriendsViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "friendCellView", for: indexPath) as! UserCell
         cell.nameLabel.text = friendsList[indexPath.row].name
-        let url = URL(string: friendsList[indexPath.row].photoUrl)
-        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-        cell.avatarImageView.image = UIImage(data: data!)
+        if let url = URL(string: friendsList[indexPath.row].photoUrl){
+        let data = try? Data(contentsOf: url) 
+            cell.avatarImageView.image = UIImage(data: data!)}
+        else{
+            cell.avatarImageView.image = #imageLiteral(resourceName: "no_avatar")
+        }
         return cell
     }
 
@@ -103,7 +116,7 @@ class FriendsTablveVC: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPhotos",
-            let ctrl = segue.destination as? PhotoCollectionViewController,
+            let ctrl = segue.destination as? PhotoCollectionVC,
             let indexpath = tableView.indexPathForSelectedRow{
             let id = friendsList[indexpath.row].id
             ctrl.userId = id

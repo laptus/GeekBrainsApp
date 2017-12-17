@@ -44,7 +44,7 @@ extension UserRouter {
             return [
                 "access_token": token,
                 "v": environment.apiVersion,
-                "fields":"nickname,domain,photo_50"
+                "fields":"nickname,domain,photo_100"
             ]
         }
     }

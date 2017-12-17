@@ -7,30 +7,25 @@
 //
 import Foundation
 import Alamofire
-import VK_ios_sdk
 
-struct Enviroment{
-    var vkEnv: VKEnviromentUrl
+struct EnvironmentImp {
+    private init(){}
 }
 
-struct VKEnviromentUrl{
-    let authBaseUrl = URL(string: "https://oauth.vk.com")!
-    let baseUrl = URL(string: "https://api.vk.com")!
-    var clientId = "6292833"
-    var apiVersion = "5.68"
-}
-
-class VKAuth{
-    var enviroment: VKEnviromentUrl
+extension EnvironmentImp {
     
-    init(enviroment: VKEnviromentUrl){
-        self.enviroment = enviroment
+    struct VKEnvironment: Environment {
+        let authBaseUrl = URL(string: "https://oauth.vk.com")!
+        let baseUrl = URL(string: "https://api.vk.com")!
+        var clientId = "6292833"
+        var apiVersion = "5.68"
     }
     
-    
-    
 }
 
-class VKDataAccessor{
-    
+protocol Environment{
+    var authBaseUrl: URL { get }
+    var baseUrl: URL { get }
+    var clientId: String { get }
+    var apiVersion: String { get }  
 }

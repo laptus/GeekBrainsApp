@@ -9,24 +9,24 @@
 import Foundation
 import Alamofire
 
-protocol RequestProtocol: URLRequestConvertible {
-    var baseURL: URL {get}
-    var path: URL {get}
-    var method: Method {get}
-    var params: Parameters{get}
-    var fullUrl: URL{get}
+public protocol RequestRouter: URLRequestConvertible {
+    var baseUrl: URL { get }
+    var method: HTTPMethod { get }
+    var path: String { get }
+    var parameters: Parameters { get }
+    var fullUrl: URL { get }
 }
 
-extension RequestRouter{
-    var fullURL: URL {
+public extension RequestRouter {
+    var fullUrl: URL {
         return baseUrl.appendingPathComponent(path)
     }
     
-    func asURLRequest() throws -> URLRequest{
-        var urlRequest = URLRequest(url: fullURL)
+    func asURLRequest() throws -> URLRequest {
+        var urlRequest = URLRequest(url: fullUrl)
         urlRequest.httpMethod = method.rawValue
+        
         return try URLEncoding.default.encode(urlRequest, with: parameters)
     }
-    
-    
 }
+

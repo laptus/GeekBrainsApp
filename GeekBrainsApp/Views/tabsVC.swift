@@ -8,8 +8,14 @@
 
 import UIKit
 
-class tabsVC: UITabBarController {
+protocol TabsVCProtocol: class {
+    var token: String { get }
+}
 
+
+class TabsVC: UITabBarController,TabsVCProtocol {
+    var token: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +27,17 @@ class tabsVC: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+// 
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.destination is FriendsTableViewController){
+//            (segue.destination as! FriendsTableViewController).token = self.token
+//        }
+//        if (segue.destination is MyGroupsViewController){
+//            (segue.destination as! MyGroupsViewController).token = self.token
+//        }
+//        // Get the new view controller using segue.destinationViewController.
+//        // Pass the selected object to the new view controller.
+//    }
+// 
 
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 private let reuseIdentifier = "Cell"
 
@@ -30,13 +31,23 @@ class PhotoCollectionVC: UICollectionViewController {
         let tabsVC = navigationController?.tabBarController as! TabsVCProtocol
         let UserServie = UserService(environment: environment, token: tabsVC.token)
         UserServie.downloadPhoto(forUser: userId){
-            [weak self] photoList in
+            [weak self] in
             // сохраняем полученные данные в массиве, чтобы коллекция могла получить к ним доступ
-            self?.photoList = photoList
+            self?.loadPhotos()
             // коллекция должна прочитать новые данные
             self?.collectionView?.reloadData()
         }
         
+    }
+    
+    func loadPhotos(){
+        do{
+            let realm = try Realm()
+            self.photoList = Array(realm.objects(PhotoInfo.self))
+        }
+        catch{
+            print(error)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,7 +79,7 @@ class PhotoCollectionVC: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoViewCell", for: indexPath) as! PhotoViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoViewCell", for: indexPath) as! PhotoCell
         let url = URL(string: photoList[indexPath.row].url)
         let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
         cell.photoImage.image = UIImage(data: data!)

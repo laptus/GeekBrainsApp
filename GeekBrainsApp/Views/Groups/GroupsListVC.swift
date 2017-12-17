@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class GroupsListVC: UITableViewController {
 
-    var myGroupsList = [GroupInfo]()
+    var groupsList = [GroupInfo]()
     
     var environment: Environment {
         return EnvironmentImp.VKEnvironment()
@@ -32,14 +33,21 @@ class GroupsListVC: UITableViewController {
         let tabsVC = navigationController?.tabBarController as! TabsVCProtocol
         let groupService = GroupService(environment: environment, token: tabsVC.token)
         groupService.getGroupById(){
-            [weak self] friendsList in
-            // сохраняем полученные данные в массиве, чтобы коллекция могла получить к ним доступ
-            self?.myGroupsList = friendsList
-            // коллекция должна прочитать новые данные
+            [weak self] in
+            self?.loadData()
             self?.tableView?.reloadData()
         }
     }
     
+    func loadData(){
+        do{
+            let realm = try Realm()
+            self.groupsList = Array(realm.objects(GroupInfo.self))
+        }
+        catch{
+            print(error)
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -55,33 +63,40 @@ class GroupsListVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return myGroupsList.count
+        return groupsList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "JoinedGroupViewCell", for: indexPath) as! JoinedGroupViewCell
-        cell.joinedGroupName.text = myGroupsList[indexPath.row].name
-        let url = URL(string: myGroupsList[indexPath.row].photoUrl)
-        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-        cell.joinedGroupAvatarImage.image = UIImage(data: data!)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "JoinedGroupViewCell", for: indexPath) as! GroupCell
+        cell.name.text = groupsList[indexPath.row].name
+        if let url = URL(string: groupsList[indexPath.row].photoUrl){
+            let data = try? Data(contentsOf: url)
+            cell.avatar.image = UIImage(data: data!)}
+        else{
+            cell.avatar.image = #imageLiteral(resourceName: "no_avatar")
+        }
         return cell
     }
  
     @IBAction func  addGroup(  segue:   UIStoryboardSegue)  {
         if  segue.identifier  == "addGroup" {
-            let  allGroupsController  =  segue.source  as!   AvailableGroupsTableViewController
+            let  allGroupsController  =  segue.source  as!   SearchGroupsVC
             if let indexPath  =  allGroupsController.availableGroupsTable.indexPathForSelectedRow {
                 let  groupName  =  allGroupsController.groupsList[indexPath.row]
-                let results = myGroupsList.filter { $0.id == groupName.id }
-                let notExists = results.isEmpty == true
-                if notExists{
-                    myGroupsList.append(groupName)
+                //let results = groupsList.filter { $0.id == groupName.id }
+                do{
+                    try Realm.updateObject(newObjects: [groupName])
+                    loadData()
                     joinedGroupsTableView.reloadData()
                 }
-//                if !myGroupsList.contains(groupName){
-//                    myGroupsList.append(groupName)
-//                    joinedGroupsTableView.reloadData()
+                catch{
+                    print(error)
+                }
+//                let notExists = results.isEmpty == true
+//                if notExists{
+//                    groupsList.append(groupName)
+//
 //                }
             }
         }
@@ -98,7 +113,7 @@ class GroupsListVC: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            myGroupsList.remove(at:  indexPath.row)
+            groupsList.remove(at:  indexPath.row)
             joinedGroupsTableView.deleteRows(at: [indexPath], with: .fade)
         }
     }

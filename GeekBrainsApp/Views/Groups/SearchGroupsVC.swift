@@ -66,12 +66,14 @@ class SearchGroupsVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AvailableGroupViewCell", for: indexPath) as! GroupInfoCell
-            cell.groupName.text = groupsList[indexPath.row].name
-            cell.groupParticipantsCount.text = String(groupsList[indexPath.row].count)
-            let url = URL(string: groupsList[indexPath.row].photoUrl)
-            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-            cell.groupAvaterImage.image = UIImage(data: data!)
-        
+        cell.name.text = groupsList[indexPath.row].name
+        cell.count.text = String(groupsList[indexPath.row].count)
+        if let url = URL(string: groupsList[indexPath.row].photoUrl){
+            let data = try? Data(contentsOf: url)
+            cell.avatar.image = UIImage(data: data!)}
+        else{
+            cell.avatar.image = #imageLiteral(resourceName: "no_avatar")
+        }
         return cell
     }
     

@@ -7,15 +7,26 @@
 //
 
 import Foundation
+import SwiftyJSON
+import RealmSwift
 
-class GroupInfo{
-    let id: Int
-    let name: String
-    let avatarInfo: PhotoInfo
+
+class GroupInfo : Object{
+    @objc dynamic var id = 0
+    @objc dynamic var name = ""
+    @objc dynamic var photoUrl = ""
+    @objc dynamic var count = 0
+
     
-    init (id: Int, name: String,url: URL){
-        self.id = id
-        self.name = name
-        self.avatarInfo = PhotoInfo(url)
+    convenience init(json: JSON){
+        self.init()
+        name = json["name"].stringValue
+        photoUrl = json["photo_100"].stringValue
+        count = json["members_count"].intValue
+        id = json["id"].intValue
+    }
+    
+    override static func primaryKey() -> String? {
+        return String("id")
     }
 }

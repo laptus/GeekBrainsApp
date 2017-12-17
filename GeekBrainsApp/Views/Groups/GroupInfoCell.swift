@@ -9,9 +9,9 @@
 import UIKit
 
 class GroupInfoCell: UITableViewCell {
-    @IBOutlet weak var groupName: UILabel!
-    @IBOutlet weak var groupParticipantsCount: UILabel!
-    @IBOutlet weak var groupAvaterImage: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var count: UILabel!
+    @IBOutlet weak var avatar: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
