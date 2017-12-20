@@ -11,7 +11,8 @@ import RealmSwift
 
 class GroupsListVC: UITableViewController {
 
-    var groupsList = [GroupInfo]()
+    var groupsList : Results<GroupInfo>?
+    var realmToken: NotificationToken?
     
     var environment: Environment {
         return EnvironmentImp.VKEnvironment()
@@ -20,32 +21,37 @@ class GroupsListVC: UITableViewController {
     @IBOutlet var joinedGroupsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         loadUserGroups()
+        pairWithRealm()
     }
 
     func loadUserGroups(){
         let tabsVC = navigationController?.tabBarController as! TabsVCProtocol
         let groupService = GroupService(environment: environment, token: tabsVC.token)
-        groupService.getGroupById(){
-            [weak self] in
-            self?.loadData()
-            self?.tableView?.reloadData()
-        }
+        groupService.getGroupById()
     }
     
-    func loadData(){
-        do{
-            let realm = try Realm()
-            self.groupsList = Array(realm.objects(GroupInfo.self))
-        }
-        catch{
-            print(error)
+    func pairWithRealm(){
+        let realm = try! Realm()
+        groupsList = realm.objects(GroupInfo.self)
+        realmToken = groupsList!.observe {[weak self] (changes: RealmCollectionChange) in
+            //            self?.tableView.reloadData()
+            guard let tableView = self?.tableView else {return}
+            switch changes{
+            case .initial:
+                tableView.reloadData()
+            case .update(_, let deletions, let insertions, let modifications):
+                tableView.beginUpdates()
+                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                     with: .automatic)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.endUpdates()
+            case .error(let error):
+                fatalError("\(error)")
+            }
         }
     }
     
@@ -63,14 +69,19 @@ class GroupsListVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return groupsList.count
+        return groupsList?.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JoinedGroupViewCell", for: indexPath) as! GroupCell
-        cell.name.text = groupsList[indexPath.row].name
-        if let url = URL(string: groupsList[indexPath.row].photoUrl){
+        guard let groupInfo = groupsList?[indexPath.row] else{
+            cell.name.text = ""
+            cell.avatar.image = #imageLiteral(resourceName: "no_avatar")
+            return cell
+        }
+        cell.name.text = groupInfo.name
+        if let url = URL(string: groupInfo.photoUrl){
             let data = try? Data(contentsOf: url)
             cell.avatar.image = UIImage(data: data!)}
         else{
@@ -87,8 +98,7 @@ class GroupsListVC: UITableViewController {
                 //let results = groupsList.filter { $0.id == groupName.id }
                 do{
                     try Realm.updateObject(newObjects: [groupName])
-                    loadData()
-                    joinedGroupsTableView.reloadData()
+//                    joinedGroupsTableView.reloadData()
                 }
                 catch{
                     print(error)
@@ -112,8 +122,17 @@ class GroupsListVC: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            do{
+                let realm = try Realm()
+                realm.beginWrite()
+                realm.delete(groupsList![indexPath.row])
+                try realm.commitWrite()
+            }catch{
+                print(error)
+            }
+            
             // Delete the row from the data source
-            groupsList.remove(at:  indexPath.row)
+            //groupsList.remove(at:  indexPath.row)
             joinedGroupsTableView.deleteRows(at: [indexPath], with: .fade)
         }
     }

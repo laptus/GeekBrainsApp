@@ -20,7 +20,7 @@ struct GroupService{
         router = GroupsRouter(environment: environment, token: token)
     }
     
-    func getGroupById(completion: @escaping () -> Void ){
+    func getGroupById( ){
         
         Alamofire.request(router.getGroupsById()).responseData(queue: .global(qos: .userInitiated)) { response in
             
@@ -30,7 +30,6 @@ struct GroupService{
             let groupsList = json["response"]["items"].array?.flatMap { GroupInfo(json: $0) } ?? []
             do{
                 try Realm.replaceObject(newObjects: groupsList)
-                completion()
             }catch{
                 print(error)
             }

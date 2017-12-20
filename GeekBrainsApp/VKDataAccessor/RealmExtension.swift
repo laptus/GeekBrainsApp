@@ -27,7 +27,5 @@ extension Realm{
         realm.beginWrite()
         realm.add(newObjects, update: true)
         try realm.commitWrite()
-    }
-    
-    
+    }    
 }

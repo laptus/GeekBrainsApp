@@ -18,7 +18,7 @@ class UserService{
         userRouter = UserRouter(environment: environment, token: token)
     }
     
-    func downloadFriendsList(completion: @escaping () -> Void ){
+    func downloadFriendsList(){
         Alamofire.request(userRouter.userList()).responseData{
             response in
             guard let data = response.value else { return }
@@ -28,7 +28,9 @@ class UserService{
             let friendsList = json["response"]["items"].array?.flatMap { UserInfo(json: $0) } ?? []
             do{
                 try Realm.replaceObject(newObjects: friendsList)
-                completion()
+//                DispatchQueue.main.async {
+//                    completion()
+//                }
             }
             catch{
                 print(error)
@@ -36,7 +38,7 @@ class UserService{
         }
     }
     
-    func downloadPhoto(forUser user: Int, completion: @escaping () -> Void) {
+    func downloadPhoto(forUser user: Int) {
         Alamofire.request(userRouter.userPhotoList(ownerId: user)).responseData(queue: .global(qos: .userInitiated)) { response in
             
             guard let data = response.value else { return }
@@ -44,7 +46,6 @@ class UserService{
             let photosList = json["response"]["items"].array?.flatMap { PhotoInfo(json: $0) } ?? []
             do{
                 try Realm.replaceObject(newObjects: photosList)
-                completion()
             }
             catch{
                 print(error)
